@@ -1,0 +1,8 @@
+{% load static %}
+<link rel="stylesheet" target="_blank" href="{% static 'css/base.css' %}">
+<h2>Create News</h2>
+<form method="post" action="/news/create/">{% csrf_token %}
+    <table>{{ news_form.as_table }}</table>
+    <button type="submit">Submit</button>
+</form>
+<a target="_blank" href="/news/">News Main</a>

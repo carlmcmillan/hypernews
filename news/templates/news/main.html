@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" target="_blank" href="{% static 'css/base.css' %}">
+<h2>Hyper news</h2>
+<h3>Search</h3>
+<form method="get" action="/news/">{% csrf_token %}
+    <table>{{ search_form.as_table }}</table>
+    <button type="submit">Search</button>
+</form>
+{% for date_group in date_pages %}
+<h4>{{ date_group.group }}</h4>
+<ul>
+    {% for page in date_group.pages %}
+    <li><a target="_blank" href="/news/{{ page.link }}/">{{ page.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
+<a target="_blank" href="/news/create/">Create news article</a>
